@@ -70,19 +70,15 @@ describe("Given I am connected as an employee", () => {
       const spyCreate = jest.spyOn(mockStore.bills(), 'create')
 
       const handleChangeFile = jest.fn(newBill.handleChangeFile)
-      // fileInput.addEventListener("change", handleChangeFile )
+      
       fileInput.addEventListener("change", (e) => handleChangeFile(e))
       
       userEvent.upload(fileInput, file)
       await new Promise(process.nextTick);
       
       expect(spyCreate).toHaveBeenCalled()
-      // expect(handleChangeFile).toHaveBeenCalled()
 
-      
       expect(fileInput.files[0]).toStrictEqual(file)
-      // expect(colHalf).not.toContainElement(msgError)
-      // expect(msgError).not.toContainHTML('<div class="error-msg" data-testid="error-msg">Veuillez sélectionner une image de type *.jpg, *.jpeg ou *.png</div>')
     })
   })
 
@@ -105,7 +101,6 @@ describe("Given I am connected as an employee", () => {
       const msgError = screen.getByTestId("error-msg")
       expect(msgError).toBeVisible()
       expect(fileInput.value).toBe("")
-      // expect(msgError.classList.contains('visible')).toBeTruthy()
     })
   })
 
@@ -150,10 +145,8 @@ describe("Given I am connected as an employee", () => {
       expect(screen.getByText('Mes notes de frais')).toBeTruthy()
     })
   })
-// })
 
-//Test d'intégration POST
-// describe('Given I am a user connected as Employee', () => {
+  //Test d'intégration POST
   describe('When I submit a completed form', () => {
     test('Then a new bill should be created', async () => {
       const html = NewBillUI()
@@ -204,7 +197,7 @@ describe("Given I am connected as an employee", () => {
 
       newBill.fileName = sampleBill.fileName
       newBill.fileUrl = sampleBill.fileUrl
-// TODO remplacer la fonction update avec un spyOn
+
       newBill.updateBill = jest.fn() // crée fonction d'update
       const handleSubmit = jest.fn((e) => newBill.handleSubmit(e)) // crée fonction de submit
 

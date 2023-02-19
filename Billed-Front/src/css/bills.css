@@ -113,3 +113,7 @@ tr td:nth-of-type(5) {
 .bill-proof-container {
   overflow: scroll;
 }
+
+.modal-content {
+  width: auto !important;
+}
